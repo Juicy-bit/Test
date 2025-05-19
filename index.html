@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Goodluck Test 🍀</title>
+  <style>
+    body {
+      background-color: #ffe6f2;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      text-align: center;
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    .envelope {
+      width: 150px;
+      height: 100px;
+      background-color: #ff8fab;
+      position: relative;
+      cursor: pointer;
+      margin-top: 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .envelope:before, .envelope:after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-style: solid;
+    }
+
+    .envelope:before {
+      top: 0;
+      left: 0;
+      border-width: 0 75px 50px 75px;
+      border-color: transparent transparent #ffb6c1 transparent;
+      border-radius: 8px 8px 0 0;
+    }
+
+    .envelope:after {
+      bottom: 0;
+      left: 0;
+      border-width: 50px 75px 0 75px;
+      border-color: #ffb6c1 transparent transparent transparent;
+      border-radius: 0 0 8px 8px;
+    }
+
+    .click-hint {
+      margin-top: 10px;
+      font-size: 18px;
+      color: #555;
+    }
+
+    .letter {
+      display: none;
+      max-width: 90%;
+      background-color: #fff;
+      margin-top: 30px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+      line-height: 1.8;
+      font-size: 16px;
+      white-space: pre-wrap;
+      animation: fadeIn 2s ease forwards;
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      color: #ff8fab;
+    }
+
+    .signature {
+      text-align: right;
+      font-style: italic;
+      margin-top: 30px;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .decor {
+      position: absolute;
+      font-size: 30px;
+      animation: float 5s infinite ease-in-out;
+      color: #ff8fab;
+    }
+
+    .decor:nth-child(odd) {
+      animation-duration: 6s;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-800px); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="decor" style="left: 10%;">💖</div>
+  <div class="decor" style="left: 30%;">🌸</div>
+  <div class="decor" style="left: 50%;">💖</div>
+  <div class="decor" style="left: 70%;">🌸</div>
+  <div class="decor" style="left: 90%;">💖</div>
+
+  <div class="envelope" id="envelope"></div>
+  <div class="click-hint" id="hint">Tap the envelope to reveal your good luck message 💖</div>
+
+  <div class="letter" id="letter">
+    <h1>Good Luck on Your Test!</h1>
+    <p>
+      Just a quick note to remind you that you're an amazing person, and you've got this! 
+      Don't stress too much about the test tonight – you’ve worked hard and you’re more 
+      prepared than you think. Just breathe, stay calm, and trust in yourself.
+    </p>
+    <p>
+      Remember, every challenge is an opportunity to grow. You've already made it this far, 
+      and that's something to be proud of. So go out there and show them what you're made of!
+    </p>
+    <div class="signature">
+      Wishing you all the best,<br />
+      Your biggest supporter 🌟
+    </div>
+  </div>
+
+  <audio id="bg-music" src="your_song.mp3" preload="auto" loop></audio>
+
+  <script>
+    const envelope = document.getElementById("envelope");
+    const letter = document.getElementById("letter");
+    const hint = document.getElementById("hint");
+    const music = document.getElementById("bg-music");
+
+    envelope.addEventListener("click", () => {
+      envelope.style.display = "none";
+      hint.style.display = "none";
+      letter.style.display = "block";
+      document.body.style.overflow = "auto";
+      music.play().catch(() => {
+        console.log("Autoplay blocked. Please tap again to allow the music 🎵");
+      });
+    });
+  </script>
+
+</body>
+</html>
+
